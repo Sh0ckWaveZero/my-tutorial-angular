@@ -1,12 +1,27 @@
 <div>
   <h1>{{ title }}</h1>
+  <nav>
+    <a routerLink="/child1">CHILD1</a> | <a routerLink="/child2">CHILD2</a> |
+    <a routerLink="/child3">CHILD3</a> | <a routerLink="/child4">CHILD4</a> |
+    <a routerLink="/child5">CHILD5</a>
+  </nav>
+
   <button (click)="onClickCount()">Run {{ count }}</button>
   <button (click)="com1.count = 10; com2.count = 10">Run2</button>
   <button (click)="onClickRun3()">Run3</button>
-  <app-com1
-    #com1
-    (onReset)="onCom1Reset($event)"
+  <app-com1 #com1 (onReset)="onCom1Reset($event)"
     [count_com1]="count"
   ></app-com1>
   <app-com2 #com2 (onReset)="onCom1Reset($event)" [count]="count"></app-com2>
+  <h2>{{ errorCode | errorCodePipe: "TH" }}</h2>
+
+  <h1>
+    <router-outlet></router-outlet>
+  </h1>
+
+  <nav>
+    <button (click)="onClickChild1()">Child1</button> |
+    <button (click)="onClickChild2()">Child2</button> |
+    <button (click)="onClickChild3()">Child3</button>
+  </nav>
 </div>

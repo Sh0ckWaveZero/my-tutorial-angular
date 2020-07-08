@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
+import { ShareService } from 'src/app/services/share.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ export class Com1Component implements OnInit {
 
   @Input("count_com1") count = 0;
   @Output() onReset = new EventEmitter<number>();
-  constructor(private app: AppComponent) { }
+  constructor(private app: AppComponent, public share: ShareService) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,10 @@ export class Com1Component implements OnInit {
   }
   onClickUpdateApp() {
     this.app.title = "Title com1";
+  }
+
+  onClickUpdateShareCount() {
+    this.share.count = this.share.count + 1;
   }
 
 }
